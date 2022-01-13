@@ -49,14 +49,14 @@ export default function SignIn() {
             type={"email"}
             label="E-mail"
             error={errors.email}
-            {...register("E-mail")}
+            {...register("email")}
           />
           <Input
             name="password"
             type={"password"}
             label="Password"
             error={errors.password}
-            {...register("Password")}
+            {...register("password")}
           />
         </Stack>
 
