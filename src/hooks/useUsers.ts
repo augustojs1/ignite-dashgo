@@ -49,7 +49,7 @@ export function useUsers(page: number) {
     () => getUsers(page),
     // tempo que o estado dos dados ficará como fresh (após isso ele será considerado stale e irá fazer uma nova requisição)
     {
-      staleTime: 1000 * 5, // 5 seconds
+      staleTime: 1000 * 60 * 10, // 10 minutos
     }
   );
 }
