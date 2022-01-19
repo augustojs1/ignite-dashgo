@@ -25,6 +25,8 @@ export async function getUsers(): Promise<User[]> {
     };
   });
 
+  console.log(users);
+
   return users;
 }
 
