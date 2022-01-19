@@ -40,7 +40,7 @@ export function makeServer() {
 
         const total = schema.all("user").length;
 
-        const pageStart = Number(page) - 1 * Number(per_page); // page 1: 0
+        const pageStart = (Number(page) - 1) * Number(per_page); // page 1: 0
         const pageEnd = pageStart + Number(per_page); // page1: 10
 
         const users = this.serialize(schema.all("user")).users.slice(
