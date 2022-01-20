@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery, UseQueryOptions } from "react-query";
 import { api } from "../services/api";
 
 type User = {
@@ -42,7 +42,7 @@ export async function getUsers(page: number): Promise<GetUsersResponse> {
   };
 }
 
-export function useUsers(page: number) {
+export function useUsers(page: number, options?: UseQueryOptions) {
   return useQuery(
     // nome da chave da informação que será armazenada em cache
     ["users", page],
@@ -50,6 +50,7 @@ export function useUsers(page: number) {
     // tempo que o estado dos dados ficará como fresh (após isso ele será considerado stale e irá fazer uma nova requisição)
     {
       staleTime: 1000 * 60 * 10, // 10 minutos
+      ...options,
     }
   );
 }

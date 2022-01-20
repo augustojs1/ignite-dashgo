@@ -24,15 +24,17 @@ import { Pagination } from "../../components/Pagination";
 import Sidebar from "../../components/Sidebar";
 import { QueryClient, useQuery } from "react-query";
 import { api } from "../../services/api";
-import { useUsers } from "../../hooks/useUsers";
+import { getUsers, useUsers } from "../../hooks/useUsers";
 import { queryClient } from "../../services/queryClient";
+import { GetServerSideProps } from "next";
 
 export default function UserList() {
   const [page, setPage] = useState(1);
 
-  console.log(page);
   // recebe como parametro a chave para ser referenciada no localStorage e uma função de callback que vai retornar os dados
   const { data, isLoading, isFetching, error } = useUsers(page);
+
+  console.log(data);
 
   const isWideVersion = useBreakpointValue({
     base: false,
@@ -143,3 +145,13 @@ export default function UserList() {
     </Box>
   );
 }
+
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   const { users, totalCount } = await getUsers(1);
+
+//   return {
+//     props: {
+//       users,
+//     },
+//   };
+// };
